@@ -1,0 +1,33 @@
+.menu-options-left{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    color: #dadada;
+    justify-content: left;
+}
+.menu-options-right{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    color: #dadada;
+    justify-content: right;
+}
+
+.logo{
+    display: flex;
+    gap: 1rem;
+    color: #dadada;
+    justify-content: center;
+}
+
+
+header{
+    background-color: #0f0f0f;
+    padding: 1rem;
+    height: 65px;
+}
+
+.container{
+    align-items: center;
+    justify-content: center;
+}

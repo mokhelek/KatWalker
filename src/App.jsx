@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
+import CartPage from "./pages/CartPage.jsx";
+import Home from "./pages/Home.jsx";
+import "./App.css";
 
-import './App.css'
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-
-  return (
-    <>
-      <Navbar/>
-    </>
-  )
+    return (
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/cart" element={<CartPage />} />
+            </Routes>
+        </>
+    );
 }
 
-export default App
+export default App;
