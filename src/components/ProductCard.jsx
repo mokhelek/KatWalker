@@ -1,6 +1,13 @@
 import React from "react";
+import axios from "axios";
 
-function ProductCard({shoe}) {
+function ProductCard({ shoe, onAddToCart }) {
+
+    
+    const handleAddToCart = () => {
+        onAddToCart(shoe.id);
+    };
+
     return (
         <>
             <div style={{ padding: "0.4rem" }} className="col-lg-4 col-md-3 col-6 shoe-box-wrapper">
@@ -24,7 +31,7 @@ function ProductCard({shoe}) {
                         </div>
 
                         <div>
-                            <button style={{ width: "100%", borderRadius: "0" }} className="btn btn-dark btn-block btn-sm">
+                            <button onClick={handleAddToCart} style={{ width: "100%", borderRadius: "0" }} className="btn btn-dark btn-block btn-sm">
                                 add to cart
                             </button>
                         </div>
