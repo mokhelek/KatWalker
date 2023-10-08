@@ -6,6 +6,7 @@ import axios from 'axios';
 
 function Home() {
     const [shoes, setShoes] = useState([]);
+    // localStorage.setItem("jwtToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthdGxlaG8iLCJhZG1pblVzZXIiOmZhbHNlLCJpYXQiOjE2OTY3ODQyNjB9.L1USGy5JNtugYy7fiR_XRrhq8L31Q_BoHQyUkltkA_Q");
 
     useEffect(() => {
         axios
