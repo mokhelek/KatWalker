@@ -2,8 +2,8 @@ import React from "react";
 import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Filters from "../components/Filters";
 
-// localStorage.setItem("jwtToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthdGxlaG8iLCJhZG1pblVzZXIiOmZhbHNlLCJpYXQiOjE2OTY3ODQyNjB9.L1USGy5JNtugYy7fiR_XRrhq8L31Q_BoHQyUkltkA_Q");
 
 function Home() {
     const [shoes, setShoes] = useState([]);
@@ -38,7 +38,9 @@ function Home() {
         <>
             <div style={{ width: "90%" }} className="container-fluid">
                 <div className="row">
-                    <div className="col-3"></div>
+                    <div className="col-3">
+                        <Filters />
+                    </div>
                     <div className="col-9">
                         <div className="row">
                             {shoes.map((shoe) => (

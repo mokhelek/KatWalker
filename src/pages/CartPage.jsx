@@ -24,7 +24,7 @@ function CartPage() {
                 <div className="row">
                     <div className="col-9">
                         {cartItems.map((cartItem) => (
-                            <CartItem cartItem={cartItem} />
+                            <CartItem key={cartItem.id} cartItem={cartItem} />
                         ))}
                     </div>
                     <div className="col-3"></div>
