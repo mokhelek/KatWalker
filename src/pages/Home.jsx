@@ -7,12 +7,15 @@ import Filters from "../components/Filters";
 
 function Home() {
     const [shoes, setShoes] = useState([]);
+    const [brands, setBrands] = useState([]);
 
     useEffect(() => {
         axios
             .get("https://shoe-catalogue-api.onrender.com/api/shoes")
             .then((response) => {
                 setShoes(response.data);
+                let brandsSet = new Set((response.data).map((shoe) => shoe.brand));
+                setBrands([...brandsSet]);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -39,7 +42,7 @@ function Home() {
             <div style={{ width: "90%" }} className="container-fluid">
                 <div className="row">
                     <div className="col-3">
-                        <Filters />
+                        <Filters brands={brands} />
                     </div>
                     <div className="col-9">
                         <div className="row">
