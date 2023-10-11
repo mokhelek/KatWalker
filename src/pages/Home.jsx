@@ -8,6 +8,7 @@ import Filters from "../components/Filters";
 function Home() {
     const [shoes, setShoes] = useState([]);
     const [brands, setBrands] = useState([]);
+    const [colors, setColors] = useState([]);
 
     useEffect(() => {
         axios
@@ -15,7 +16,10 @@ function Home() {
             .then((response) => {
                 setShoes(response.data);
                 let brandsSet = new Set((response.data).map((shoe) => shoe.brand));
+                let colorsSet = new Set((response.data).map((shoe) => shoe.color));
+
                 setBrands([...brandsSet]);
+                setColors([...colorsSet]);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -42,7 +46,7 @@ function Home() {
             <div style={{ width: "90%" }} className="container-fluid">
                 <div className="row">
                     <div className="col-3">
-                        <Filters brands={brands} />
+                        <Filters brands={brands} colors={colors} />
                     </div>
                     <div className="col-9">
                         <div className="row">
