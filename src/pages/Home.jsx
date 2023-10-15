@@ -43,13 +43,22 @@ function Home() {
         }
     };
 
-    const setBrand = (val) => {
-        setBrandFilterVal(val)
+    const setBrand = (brand) => {
+        setBrandFilterVal(brand);
     };
-    
-    useEffect(()=>{
+
+    const setColor = (color) => {
+        let firstChar = color.slice(0, 1);
+        if (firstChar == "#") {
+            setColorFilterVal(color.slice(1));
+        } else {
+            setColorFilterVal(color);
+        }
+    };
+
+    useEffect(() => {
         applyFilter();
-    },[brandFilterVal])
+    }, [brandFilterVal, colorFilterVal]);
 
     function applyFilter() {
         if (colorFilterVal != "" && sizeFilterVal == "" && brandFilterVal == "") {
@@ -81,27 +90,18 @@ function Home() {
                 setShoes(result.data);
             });
         } else {
-            axios
-            .get("https://shoe-catalogue-api.onrender.com/api/shoes")
-            .then((response) => {
+            axios.get("https://shoe-catalogue-api.onrender.com/api/shoes").then((response) => {
                 setShoes(response.data);
-                // let brandsSet = new Set(response.data.map((shoe) => shoe.brand));
-                // let colorsSet = new Set(response.data.map((shoe) => shoe.color));
-                // setBrands([...brandsSet]);
-                // setColors([...colorsSet]);
-            })
-            
+            });
         }
-    };
-
-
+    }
 
     return (
         <>
             <div style={{ width: "90%" }} className="container-fluid">
                 <div className="row">
                     <div className="col-3">
-                        <Filters onSetBrand={setBrand} brands={brands} colors={colors} />
+                        <Filters onSetBrand={setBrand} onSetColor={setColor} brands={brands} colors={colors} />
                     </div>
                     <div className="col-9">
                         <div className="row">

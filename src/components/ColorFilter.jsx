@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import ColorOption from "./ColorOption";
 
-function ColorFilter({ colors }) {
+
+function ColorFilter({onSetColor, colors }) {
     const [isOpen, setIsOpen] = useState(true);
 
     const toggleDropdown = () => {
@@ -40,9 +42,7 @@ function ColorFilter({ colors }) {
 
                             {colors.map((color, index) => {
                                 return (
-                                    <button key={index} className="btn color-options" style={{ marginBottom: "0.4rem" }}>
-                                        <div style={{ height: "2rem", width: "2rem", borderRadius: "5px", border: "1px black solid", backgroundColor: `${color}` }}></div>
-                                    </button>
+                                    <ColorOption key={index} onSetColor={onSetColor} option={color} />
                                 );
                             })}
                         </div>
