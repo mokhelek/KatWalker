@@ -10,6 +10,19 @@ function ColorFilter({onSetColor, colors }) {
         setIsOpen(!isOpen);
     };
 
+    const handleColorFilter = (event) => {
+        onSetColor("");
+        selectedColor(event.target);
+    };
+
+    const selectedColor = (element) => {
+        let elem = document.querySelectorAll(".selected");
+        for (let i of elem){
+            i.classList.remove("selected");
+        }
+        element.classList.add("selected");
+    };
+
     return (
         <>
             <div className="brand-color" style={{ marginBottom: "0.7rem" }}>
@@ -32,7 +45,7 @@ function ColorFilter({onSetColor, colors }) {
                 {isOpen && (
                     <div style={{ backgroundColor: "rgb(252, 252, 252)", width: "95%", padding: "0.5rem" }}>
                         <div className="">
-                            <button id="colors" className="btn color-options" style={{ marginBottom: "0.4rem" }}>
+                            <button id="colors" onClick={handleColorFilter} className="btn color" style={{ marginBottom: "0.4rem" }}>
                                 <div id="all" style={{ height: "1.9rem", width: "1.9rem", fontSize: "0.85rem", border: "1px black solid", borderRadius: "5px", padding: "0.1rem" }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />

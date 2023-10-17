@@ -18,7 +18,7 @@ function ColorOption({ onSetColor, option }) {
 
     return (
         <>
-            <button onClick={handleColorFilter} className="btn color" style={{ marginBottom: "0.4rem" }}>
+            <button onClick={handleColorFilter} className="btn color-option" style={{ marginBottom: "0.4rem" }}>
                 <div style={{ height: "2rem", width: "2rem", borderRadius: "5px", border: "1px black solid", backgroundColor: `${option}` }}></div>
             </button>
         </>
