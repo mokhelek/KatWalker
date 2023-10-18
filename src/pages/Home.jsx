@@ -3,11 +3,13 @@ import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Filters from "../components/Filters";
+import HomePageLoader from "../components/HomePageLoader";
 
 function Home() {
     const [shoes, setShoes] = useState([]);
     const [brands, setBrands] = useState([]);
     const [colors, setColors] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [brandFilterVal, setBrandFilterVal] = useState("");
     const [colorFilterVal, setColorFilterVal] = useState("");
@@ -17,6 +19,7 @@ function Home() {
         axios
             .get("https://shoe-catalogue-api.onrender.com/api/shoes")
             .then((response) => {
+                setIsLoading(false);
                 setShoes(response.data);
                 let brandsSet = new Set(response.data.map((shoe) => shoe.brand));
                 let colorsSet = new Set(response.data.map((shoe) => shoe.color));
@@ -100,16 +103,22 @@ function Home() {
         <>
             <div style={{ width: "90%" }} className="container-fluid">
                 <div className="row">
-                    <div className="col-3">
-                        <Filters onSetBrand={setBrand} onSetColor={setColor} brands={brands} colors={colors} />
-                    </div>
-                    <div className="col-9">
-                        <div className="row">
-                            {shoes.map((shoe) => (
-                                <ProductCard key={shoe.id} shoe={shoe} onAddToCart={addToCart} />
-                            ))}
-                        </div>
-                    </div>
+                    {isLoading && <HomePageLoader />}
+
+                    {!isLoading && (
+                        <>
+                            <div className="col-3">
+                                <Filters onSetBrand={setBrand} onSetColor={setColor} brands={brands} colors={colors} />
+                            </div>
+                            <div className="col-9">
+                                <div className="row">
+                                    {shoes.map((shoe) => (
+                                        <ProductCard key={shoe.id} shoe={shoe} onAddToCart={addToCart} />
+                                    ))}
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>
