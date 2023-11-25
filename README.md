@@ -31,7 +31,7 @@ FIND THE API CODE [here](https://github.com/mokhelek/shoe-catalogue-api.git)
 
 **✅** Docker
 
-**✅** React.js
+**✅** Vite & React.js
 
 **✅** CSS
 
